@@ -1,0 +1,14 @@
+services:
+  docu-chat:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - CLAUDE_MODEL=${CLAUDE_MODEL:-claude-sonnet-4-5}
+    volumes:
+      - ./docs:/app/docs
+      - chroma-data:/app/.chroma
+
+volumes:
+  chroma-data:
